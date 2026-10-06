@@ -1,0 +1,227 @@
+
+
+### 🛒 E-Commerce / Online Shopping
+
+1. Create a `Products` table with `product_id`, `product_name`, `category`, `price`, `quantity`, and `brand`.
+
+CREATE TABLE Products (
+    product_id INT PRIMARY KEY,
+    product_name VARCHAR(50) NOT NULL,
+    category VARCHAR(30),
+    price DECIMAL(10,2),
+    quantity INT,
+    brand VARCHAR(30)
+);
+
+2. Insert **10 products** into the `Products` table.
+
+INSERT INTO Products 
+(product_id, product_name, category, price, quantity, brand)
+VALUES
+(1, 'Laptop', 'Electronics', 55000.00, 10, 'HP'),
+(2, 'Smartphone', 'Electronics', 25000.00, 15, 'Samsung'),
+(3, 'Headphones', 'Electronics', 2500.00, 25, 'Boat'),
+(4, 'Office Chair', 'Furniture', 7500.00, 8, 'Nilkamal'),
+(5, 'Backpack', 'Bags', 1200.00, 30, 'Skybags'),
+(6, 'Running Shoes', 'Footwear', 3500.00, 20, 'Nike'),
+(7, 'T-Shirt', 'Clothing', 800.00, 40, 'Puma'),
+(8, 'Smart Watch', 'Electronics', 4500.00, 18, 'Noise'),
+(9, 'Study Table', 'Furniture', 6000.00, 12, 'IKEA'),
+(10, 'Bluetooth Speaker', 'Electronics', 3000.00, 22, 'JBL');
+
+3. Display all products whose price is greater than **₹1,000**.
+
+   Select * from products where price is > 1000;
+
+4. Update the price of a particular product when its `product_id` is given.
+
+   update product set price = 2000 where product_id = 7;
+
+5. Delete a product that is no longer available in the store.
+
+   delete from product where status = 'Not Available';
+
+6. Display products belonging to the **Electronics** category using the `WHERE` clause.
+
+   select * from products where category = 'Electronics';
+
+
+7. Display products whose price is between **₹500 and ₹2,000** using the `BETWEEN` operator.
+
+   select * from products where price BETWEEN 500 AND 2000;
+
+8. Display products from the **Electronics, Clothing, or Furniture** categories using the `IN` operator.
+
+   select * from products where category IN('Electronics','Clothing','Furniture');
+
+9. Display products whose name starts with the letter **'S'** using the `LIKE` operator.
+
+   select * from products where name LIKE 'S%';
+
+10. Display products where the price is greater than ₹1,000 **AND** quantity is less than 20.
+
+   select * from products where price > 1000 AND quantity < 20.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### 🏦 Banking System
+
+11. Create a `BankAccount` table using suitable datatypes for account ID, customer name, account type, balance, city, and account status.
+
+CREATE TABLE BankAccount (
+    account_id INT,
+    customer_name VARCHAR(50),
+    account_type VARCHAR(20),
+    balance DECIMAL(12,2),
+    city VARCHAR(30),
+    account_status VARCHAR(20)
+);
+
+12. Apply suitable **PRIMARY KEY, NOT NULL, UNIQUE, and CHECK constraints** to the `BankAccount` table.
+
+Alter table Bankaccount ADD Constraint account_id INT PRIMARY KEY;
+
+   Alter table Bankaccount ADD Constraint customer_name varchar(50) NOT NULL;
+
+   Alter table Bankaccount Modify column customer_name varchar(50) NOT NULL UNIQUE;
+
+   Alter table Bankaccount ADD Constraint balance DECIMAL(12,2) CHECK(balance >= 3000);
+
+
+13. Insert 10 bank account records.
+INSERT INTO BankAccount
+(account_id, customer_name, account_type, balance, city, account_status)
+VALUES
+(1001, 'Amit Sharma', 'Savings', 45000.50, 'Pune', 'Active'),
+(1002, 'Priya Patil', 'Current', 125000.00, 'Mumbai', 'Active'),
+(1003, 'Rahul Jadhav', 'Savings', 32500.75, 'Nashik', 'Active'),
+(1004, 'Sneha Kulkarni', 'Salary', 68000.00, 'Pune', 'Active'),
+(1005, 'Vikas Deshmukh', 'Savings', 15000.25, 'Nagpur', 'Inactive'),
+(1006, 'Neha Joshi', 'Current', 210000.00, 'Mumbai', 'Active'),
+(1007, 'Rohan More', 'Savings', 27500.00, 'Kolhapur', 'Active'),
+(1008, 'Pooja Shinde', 'Salary', 52000.50, 'Pune', 'Active'),
+(1009, 'Akash Pawar', 'Savings', 9500.00, 'Satara', 'Closed'),
+(1010, 'Snehal Chavan', 'Current', 175000.75, 'Aurangabad', 'Active');
+
+
+14. Display customers whose account balance is greater than **₹50,000**.
+
+    select * from customer where balance > 50000;
+
+15. Update the account balance of a particular customer.
+
+    update Bankaccount set balance = 100000 where account_id = 1009;
+
+16. Find the **total balance** of all bank accounts using `SUM()`.
+
+    select SUM(balance) As Total_Balance from Bankaccount;
+
+17. Find the **average account balance** using `AVG()`.
+
+    select AVG(balance) As Average_Balance from Bankaccount;
+
+
+18. Find the **highest and lowest account balance** using `MAX()` and `MIN()`.
+
+    select MAX(balance) As Highest_Balance,MIN(balance) As Lowwest_Balance from Bankaccount;
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### 🏥 Hospital System
+
+19. Create a `Patient` table with `patient_id`, `patient_name`, `age`, `disease`, `city`, `fees`, and `admission_date`.
+
+   CREATE TABLE Patient (
+    patient_id INT PRIMARY KEY,
+    patient_name VARCHAR(50) NOT NULL,
+    age INT,
+    disease VARCHAR(50),
+    city VARCHAR(30),
+    fees DECIMAL(10,2),
+    admission_date DATE
+);
+
+20. Insert 10 patient records using appropriate datatypes.
+
+INSERT INTO Patient
+(patient_id, patient_name, age, disease, city, fees, admission_date)
+VALUES
+(101, 'Amit Sharma', 35, 'Fever', 'Pune', 1500.00, '2026-09-01'),
+(102, 'Priya Patil', 28, 'Diabetes', 'Mumbai', 2500.50, '2026-09-02'),
+(103, 'Rahul Jadhav', 42, 'Hypertension', 'Nashik', 3200.00, '2026-09-03'),
+(104, 'Sneha Kulkarni', 31, 'Migraine', 'Pune', 1800.75, '2026-09-04'),
+(105, 'Vikas More', 55, 'Asthma', 'Nagpur', 4000.00, '2026-09-05'),
+(106, 'Neha Joshi', 24, 'Fever', 'Mumbai', 1200.00, '2026-09-06'),
+(107, 'Rohan Pawar', 48, 'Heart Disease', 'Satara', 7500.50, '2026-09-07'),
+(108, 'Pooja Shinde', 39, 'Thyroid', 'Pune', 2800.00, '2026-09-08'),
+(109, 'Akash Deshmukh', 19, 'Infection', 'Kolhapur', 1600.25, '2026-09-09'),
+(110, 'Snehal Chavan', 63, 'Arthritis', 'Aurangabad', 3500.00, '2026-09-10');
+
+21. Display patients whose age is greater than **50** and whose fees are greater than **₹5,000**.
+
+    select * from Patient where age >50 AND fees > 5000;
+
+22. Display patients whose disease contains the word **"fever"** using `LIKE`.
+    
+    select * from Patient where disease LIKE 'fever%';
+
+23. Find the **total fees collected** from all patients using `SUM()`.
+
+    select SUM(fees) As Total_fees_collected from Patient;
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### 🎓 College Management
+
+24. Create a `CollegeStudent` table with suitable constraints and datatypes.
+
+CREATE TABLE CollegeStudent (
+    student_id INT PRIMARY KEY,
+    student_name VARCHAR(50) NOT NULL,
+    age INT CHECK (age >= 17),
+    email VARCHAR(100) UNIQUE,
+    phone_no BIGINT UNIQUE,
+    course VARCHAR(50) NOT NULL,
+    city VARCHAR(30),
+    fees DECIMAL(10,2) CHECK (fees >= 0),
+    admission_date DATE NOT NULL,
+    status VARCHAR(20) DEFAULT 'Active'
+);
+
+25. Display the **top 5 students** according to marks using `ORDER BY` and `LIMIT`.
+
+    select * from CollegeStudent ORDERBY DESC LIMIT 5;
+
+26. Skip the first 5 students and display the next 5 students using `LIMIT` and `OFFSET`.
+  
+    select * from CollegeStudent LIMIT 5 OFFSET 5;
+
+
+27. Display student names with the column heading **"Student Name"** using an alias.
+
+    select name As Student_name from CollegeStudent;
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### 🏢 Employee Management
+
+28. Create an `Employee` table and use `ALTER TABLE` to **add an `email` column** after creating the table.
+
+CREATE TABLE Employee (
+    employee_id INT PRIMARY KEY,
+    employee_name VARCHAR(50) NOT NULL,
+    department VARCHAR(30),
+    salary DECIMAL(10,2),
+    city VARCHAR(30),
+    experience INT,
+    status VARCHAR(20)
+);
+
+29. Use `ALTER TABLE` to **rename an existing column**, modify a column's datatype, and drop an unnecessary column.
+
+   Alter table Employee RENAME Column city TO address; 
+
+   Alter table MODIFY Column department varchar(50);
+
+   Alter table DROP Column status;
+
+
+30. Write a SQL script containing **single-line (`--`) and multi-line (`/* */`) comments** explaining the purpose of different queries.
+
+
